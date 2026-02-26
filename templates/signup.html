@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup - Smart Notes{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card card">
+        <h2>Create an account</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-field">{{ field.label_tag }}{{ field }}</div>
+            {% endfor %}
+            <div style="display:flex;gap:8px;align-items:center">
+                <button class="btn" type="submit">Register</button>
+                <a class="btn secondary" href="{% url 'login' %}">Login</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

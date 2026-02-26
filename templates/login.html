@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Smart Notes{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card card">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-field">{{ form.username.label_tag }}{{ form.username }}</div>
+            <div class="form-field">{{ form.password.label_tag }}{{ form.password }}</div>
+            <div style="display:flex;gap:8px;align-items:center">
+                <button class="btn" type="submit">Login</button>
+                <a class="btn secondary" href="{% url 'signup' %}">Signup</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

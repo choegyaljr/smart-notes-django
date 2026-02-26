@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Smart Notes{% endblock %}
+
+{% block content %}
+<div class="content">
+
+    <aside class="sidebar">
+        <div class="card">
+            <h3>Dashboard</h3>
+            <p>Welcome <strong>{{ request.user.username }}</strong></p>
+            <p>Role: {{ request.user.role }}</p>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    </aside>
+
+    <main>
+        <header>
+            <h1>Smart Notes</h1>
+        </header>
+
+        <section id="input-container" class="card">
+            <input type="text" id="note-input" placeholder="Enter note...">
+            <button id="add-button">Add</button>
+        </section>
+
+        <section id="notes-list">
+            {% for note in notes %}
+                <article>
+                    <p>{{ note.content }}</p>
+                    <button>Delete</button>
+                </article>
+            {% empty %}
+                <p>No notes yet.</p>
+            {% endfor %}
+        </section>
+    </main>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
